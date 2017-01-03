@@ -14,7 +14,6 @@ function Article (options) {
   this.body = options.body;
   this.title = options.title;
 }
-
 Article.prototype.toHtml = function() {
   var $newArticle = $('article.template').clone();
   $newArticle.attr('data-category', this.category);
@@ -23,7 +22,6 @@ Article.prototype.toHtml = function() {
   $newArticle.find('.byLine address a').text(this.author);
   $newArticle.find('.article-body').html(this.body);
   $newArticle.find('h1').text(this.title);
-
   $newArticle.find('time[pubdate]').attr('title', this.publishedOn);
   $newArticle.find('time').text('about ' + parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago');
 /* DONE: This cloned article is no longer a template, as it now
@@ -31,7 +29,6 @@ has real data attached to it. Remove the class from this new article! */
   $newArticle.removeClass('template');
   return $newArticle;
 };
-
 /* This sort method is a standard JavaScript Array function
    that will iterate over an array and compare its values,
    and then arrange them in ascending or descending order
